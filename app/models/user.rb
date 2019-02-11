@@ -5,8 +5,7 @@ class User < ApplicationRecord
 
   validates :first_name, presence: true
   validates :last_name, presence: true
-  validates :username, uniqueness: true,format: { with: /\A[a-zA-Z]+\z/,
-    message: "only allows letters" }
-  validates :bio, presence: true
+  validates :username, uniqueness: true
+  validates :gender, inclusion: { in: ["Male", "Female" ,"Non-Binary", "Rather not say"] }
   validates :email, uniqueness: true, format: { with: URI::MailTo::EMAIL_REGEXP, message: "only allows valid emails" }
 end
