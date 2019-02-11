@@ -1,7 +1,41 @@
 <section>
   <div class="container">
-    <h1><%= @user.full_name %></h1>
+    <h1><h1><%= link_to @user.company.name, company_path(@user.company)%> > <%= @user.full_name %></h1></h1>
 
-    
+    <%= button_to "Edit", edit_user_path(@user), method: :get, class: "btn btn-info" %><br>
+
+    <p>
+      Company: <b><%= @user.company.name %></b><br>
+      First Name: <b><%= @user.first_name %></b><br>
+      Last Name: <b><%= @user.last_name %></b><br>
+      Gender: <b><%= @user.gender %></b><br>
+      Email: <b><%= @user.email %></b><br>
+      Created: <b><%= time_ago_in_words(@user.created_at) + " ago" %></b><br>
+      Last Updated: <b><%= time_ago_in_words(@user.updated_at) + " ago" %></b><br>
+    </p>
+
+    <hr>
+
+    <h3>Answers:</h3>
+    <% if @user.answers.count == 0 %>
+      <p>
+        Looks like you havent answered your companies questions yet, don't be
+        shy, it only take a few mins to add your answers and introduce yourself
+        to your new team!
+      </p>
+
+      <button class="btn btn-primary">
+        Answer Questions (i do nothing yet)
+      </button>
+
+    <% else %>
+      <% @user.answers.each do |answer| %>
+        <p>
+          <b>Q: <%= answer.question.content %></b><br>
+          A: <%= answer.content %>
+        </p>
+      <% end%>
+    <% end%>
+
   </div>
 </section>

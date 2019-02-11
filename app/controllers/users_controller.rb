@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :find_user, only: [:show]
+  before_action :find_user, only: [:show, :edit, :update]
 
   def index
     @users = User.all
@@ -8,10 +8,30 @@ class UsersController < ApplicationController
   def show
   end
 
+  def edit
+  end
+
+  def update
+    if @user.update(user_params)
+      redirect_to user_path(@user)
+    else
+      render :edit
+    end
+  end
+
+  def new
+    #TODO
+    #@user = User.new({company_id: params[:company_id]})
+  end
+
   private
 
   def find_user
     @user = User.find(params[:id])
+  end
+
+  def user_params
+    params.require(:user).permit(:first_name, :last_name, :gender, :email, :user_name, :company_name)
   end
 
 end

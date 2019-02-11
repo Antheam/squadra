@@ -30,7 +30,7 @@
             <th scope="col">Company Name</th>
             <th scope="col">Bio</th>
             <th scope="col">Joined</th>
-            <th scope="col"># of teams</th>
+            <th scope="col"># of Users</th>
           </tr>
         </thead>
         <tbody>
@@ -39,7 +39,7 @@
             <th scope="row"><%= link_to company.name, company_path(company) %></th>
             <td><%= company.bio %></td>
             <td><%= time_ago_in_words(company.created_at) + " ago" %></td>
-            <td><%= company.teams.count %></td>
+            <td><%= company.users.count %></td>
           </tr>
           <% end %>
         </tbody>

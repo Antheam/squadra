@@ -1,6 +1,4 @@
 Company.destroy_all
-Team.destroy_all
-UserTeam.destroy_all
 User.destroy_all
 Answer.destroy_all
 Question.destroy_all
@@ -9,10 +7,6 @@ Company.create([
   {name: "Flatiron", bio: "Building tomorrows coders"}
 ])
 
-Team.create([
-  {name: "London Campus", bio: "Best campus in FI", company: Company.first},
-  {name: "classHoles", bio: "Loving the rails life", company: Company.first}
-])
 
 User.create([
   {first_name: "Chris", last_name: "Camacho", username: "cacamacho91",
@@ -27,8 +21,7 @@ User.create([
     gender: "Male", email: "ben.miller@flatironschool.com", bio:"", company: Company.first}
 ])
 
-Team.first.users << [User.first, User.second, User.third, User.fourth, User.fifth]
-Team.second.users << [User.first, User.second, User.third, User.fourth]
+Company.first.users << [User.first, User.second, User.third, User.fourth, User.fifth]
 
 Question.create([
   {content: "Who inspires you?", active: true},
@@ -42,6 +35,8 @@ Question.create([
   {content: "Do you collect anything?", active: true},
   {content: "Whats your favorite drink?", active: true}
 ])
+
+Company.first.questions << Question.all
 
 Answer.create ([
   {content: "My Mum", question: Question.first , user: User.first},
