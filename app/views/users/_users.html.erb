@@ -14,6 +14,7 @@
           <th scope="col">Last Name</th>
           <th scope="col">Created</th>
           <th scope="col">Updated</th>
+          <th></th>
         </tr>
       </thead>
       <tbody>
@@ -24,6 +25,10 @@
           <td><%= user.last_name %></td>
           <td><%= time_ago_in_words(user.created_at) + " ago" %></td>
           <td><%= time_ago_in_words(user.updated_at) + " ago" %></td>
+          <td>
+            <%= link_to 'Delete', user_path(user), method: :delete,
+                data: { confirm: 'Are you sure?' } %>
+          </td>
         </tr>
         <% end %>
       </tbody>

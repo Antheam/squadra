@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :find_user, only: [:show, :edit, :update]
+  before_action :find_user, only: [:show, :edit, :update, :destroy]
 
   def index
     @users = User.all
@@ -22,6 +22,11 @@ class UsersController < ApplicationController
   def new
   end
 
+  def destroy
+    @user.destroy
+    redirect_to company_path(@user.company)
+  end
+
   private
 
   def find_user
@@ -29,7 +34,7 @@ class UsersController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit(:first_name, :last_name, :gender, :email, :user_name, :company_name)
+    params.require(:user).permit(:first_name, :last_name, :gender, :email, :user_name)
   end
 
 end

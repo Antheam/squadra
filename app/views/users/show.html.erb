@@ -24,9 +24,7 @@
         to your new team!
       </p>
 
-      <button class="btn btn-primary">
-        Answer Questions (i do nothing yet)
-      </button>
+      <%= link_to "Answer Questions", new_answer_path(user_id: @user.id)%>
 
     <% else %>
       <% @user.answers.each do |answer| %>

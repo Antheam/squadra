@@ -31,6 +31,7 @@
             <th scope="col">Bio</th>
             <th scope="col">Joined</th>
             <th scope="col"># of Users</th>
+            <th scope="col"></th>
           </tr>
         </thead>
         <tbody>
@@ -40,6 +41,10 @@
             <td><%= company.bio %></td>
             <td><%= time_ago_in_words(company.created_at) + " ago" %></td>
             <td><%= company.users.count %></td>
+            <td>
+              <%= link_to 'Delete', company_path(company), method: :delete,
+                  data: { confirm: 'Are you sure?' } %>
+            </td>
           </tr>
           <% end %>
         </tbody>

@@ -3,6 +3,6 @@ Rails.application.routes.draw do
 
   root 'application#welcome'
   resources :companies
-  resources :teams, only: [:show, :edit, :update, :new, :create]
-  resources :users, only: [:show, :edit, :update, :new, :create]
+  resources :users
+  resources :answers, only: [:new, :create]
 end
