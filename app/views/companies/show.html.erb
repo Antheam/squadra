@@ -9,7 +9,7 @@
     </p>
 
     <h3>Users:</h3>
-    <%= button_to "Add a User", new_user_path, method: :get, class: "btn btn-success" %><br>
+    <%= button_to "Add a User", "#{new_user_path}?company_id=#{@company.id}", method: :get, class: "btn btn-success" %><br>
     <%= render partial: "users/users", locals: {users: @company.users} %>
 
   </div>

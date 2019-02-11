@@ -1,12 +1,12 @@
 Company.destroy_all
 User.destroy_all
+CompanyQuestion.destroy_all
 Answer.destroy_all
 Question.destroy_all
 
 Company.create([
   {name: "Flatiron", bio: "Building tomorrows coders"}
 ])
-
 
 User.create([
   {first_name: "Chris", last_name: "Camacho", username: "cacamacho91",

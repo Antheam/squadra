@@ -20,8 +20,6 @@ class UsersController < ApplicationController
   end
 
   def new
-    #TODO
-    #@user = User.new({company_id: params[:company_id]})
   end
 
   private
