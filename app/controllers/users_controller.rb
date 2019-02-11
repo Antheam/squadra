@@ -20,8 +20,17 @@ class UsersController < ApplicationController
   end
 
   def new
+    @user = User.new
   end
-
+  def create
+      @user = User.create(user_params)
+      if @user.valid?
+        redirect_to @user
+      else
+        render :new
+      end
+      # byebug
+  end
   private
 
   def find_user
@@ -29,7 +38,7 @@ class UsersController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit(:first_name, :last_name, :gender, :email, :user_name, :company_name)
+    params.require(:user).permit(:first_name, :last_name, :gender, :email, :username, :bio, :company_id)
   end
 
 end

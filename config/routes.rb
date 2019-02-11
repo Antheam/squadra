@@ -4,5 +4,5 @@ Rails.application.routes.draw do
   root 'application#welcome'
   resources :companies
   resources :teams, only: [:show, :edit, :update, :new, :create]
-  resources :users, only: [:show, :edit, :update, :new, :create]
+  resources :users, only: [:index,:show, :edit, :update, :new, :create]
 end
