@@ -16,15 +16,15 @@ Team.create([
 
 User.create([
   {first_name: "Chris", last_name: "Camacho", username: "cacamacho91",
-    gender: "Male", email: "cacamacho91@gmail.com", bio:""},
+    gender: "Male", email: "cacamacho91@gmail.com", bio:"", company: Company.first},
   {first_name: "Souley", last_name: "Sow", username: "souleyman",
-    gender: "Male", email: "souleymanesow@gmail.com", bio:""},
+    gender: "Male", email: "souleymanesow@gmail.com", bio:"", company: Company.first},
   {first_name: "Sam", last_name: "Barker", username: "bamsarker",
-    gender: "Male", email: "sam.barker@flatironschool.com", bio:""},
+    gender: "Male", email: "sam.barker@flatironschool.com", bio:"", company: Company.first},
   {first_name: "Minha", last_name: "Koo", username: "kkooming",
-    gender: "Female", email: "kkooming2@gmail.com", bio:""},
+    gender: "Female", email: "kkooming2@gmail.com", bio:"", company: Company.first},
   {first_name: "Ben", last_name: "Miller", username: "bmiller",
-    gender: "Male", email: "ben.miller@flatironschool.com", bio:""}
+    gender: "Male", email: "ben.miller@flatironschool.com", bio:"", company: Company.first}
 ])
 
 Team.first.users << [User.first, User.second, User.third, User.fourth, User.fifth]

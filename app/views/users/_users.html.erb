@@ -1,0 +1,35 @@
+<!-- Content to display empty state if no teams exist fro company yet -->
+<% if users.count == 0 %>
+  <p>
+    Looks like no users have been set up yet, why not create the first?
+  </p>
+  <%= button_to "Add a User", new_user_path, method: :get, class: "btn btn-success" %>
+<!-- Content to display table containing teams -->
+<% else %>
+  <%= button_to "Add a User", new_user_path, method: :get, class: "btn btn-success" %><br>
+
+  <div class="table-responsive">
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Username</th>
+          <th scope="col">First Name</th>
+          <th scope="col">Last Name</th>
+          <th scope="col">Created</th>
+          <th scope="col"># of Teams</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% users.each do |user| %>
+        <tr>
+          <th scope="row"><%= link_to user.username, user_path(user) %></th>
+          <td><%= user.first_name %></td>
+          <td><%= user.last_name %></td>
+          <td><%= time_ago_in_words(user.created_at) + " ago" %></td>
+          <td><%= pluralize(user.teams.count, "team") %></td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+<% end %>

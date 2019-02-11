@@ -1,0 +1,51 @@
+<section>
+  <div class="container">
+    <br>
+    <h1>All companies using Squarda</h1>
+
+    <p>
+      *this page will be hidden behind a permission flag in production*
+    </p>
+
+    <br>
+
+    <!-- Content to display empty state if no companies exist yet -->
+    <% if @companies.count == 0 %>
+      <p>
+        Looks like no companies have been set up yet, why not create the first?
+      </p>
+      <%= button_to "New", new_company_path, method: :get, class: "btn btn-success" %>
+
+    <!-- Content to display table containing companies -->
+    <% else %>
+
+    <%= button_to "New", new_company_path, method: :get, class: "btn btn-success" %>
+
+    <br>
+
+    <div class="table-responsive">
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Company Name</th>
+            <th scope="col">Bio</th>
+            <th scope="col">Joined</th>
+            <th scope="col"># of teams</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @companies.each do |company| %>
+          <tr>
+            <th scope="row"><%= link_to company.name, company_path(company) %></th>
+            <td><%= company.bio %></td>
+            <td><%= time_ago_in_words(company.created_at) + " ago" %></td>
+            <td><%= company.teams.count %></td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+    <% end %>
+
+  </div>
+</section>

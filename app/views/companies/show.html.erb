@@ -1,0 +1,38 @@
+<section>
+  <div class="container">
+    <h1><%= @company.name %></h1>
+    <hr>
+
+    <%= button_to "edit", company_path(@company), method: :get, class: "btn-sm btn-info"%>
+
+    <br>
+    <p>
+      <b>Bio:</b> <%= @company.bio %>
+    </p>
+
+    <ul class="nav nav-tabs">
+      <li class="nav-item">
+        <a class="nav-link
+          <%= "active" if @view == 'teams' %>"
+          href="<%="#{company_path(@company)}?view=teams"%>">
+          <%= pluralize(@company.teams.count, "Team") %>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link <%= "active" if @view == 'users'%>"
+          href="<%="#{company_path(@company)}?view=users"%>">
+          <%= pluralize(@company.all_users_count, "User") %>
+        </a>
+      </li>
+    </ul>
+
+    <br>
+
+    <% if @view == 'teams' %>
+      <%= render partial: "teams/teams", locals: {teams: @company.teams} %>
+    <% else %>
+      <%= render partial: "users/users", locals: {users: @company.all_users} %>
+    <% end %>
+
+  </div>
+</section>
