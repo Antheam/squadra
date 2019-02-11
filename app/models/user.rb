@@ -9,7 +9,6 @@ class User < ApplicationRecord
   validates :last_name, presence: true
   validates :username, uniqueness: true,format: { with: /\A[a-zA-Z]+\z/,
     message: "only allows letters" }
-  validates :bio, presence: true
   validates :email, uniqueness: true, format: { with: URI::MailTo::EMAIL_REGEXP, message: "only allows valid emails" }
   validates :company_id, presence: true
 
