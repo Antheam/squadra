@@ -1,60 +1,64 @@
+<h1>Join Squadra!</h1>
+<div class="form-group">
+  <p>
+    Welcome to Squadra, we help you onboard new starters easily to your
+    business by quikcly building strong relationships and friendships that last.
+  </p>
 
-  <div class="container">
-    <h1>Create new User</h1>
-
-
-    <!--New User Code Here-->
-<div class="form-group">
-    <%= form_for @user do |f| %>
-<div class="field">
-    <%= f.label :first_name %>
-      <div class="col-sm-10">
-    <%= f.text_field :first_name %>
-  </div>
-    </div>
-
-<div class="field">
-    <%= f.label :last_name %>
-      <div class="col-sm-10">
-    <%= f.text_field :last_name %>
-  </div>
-    </div>
-<div class="form-group">
-    <%= f.label :username %>
-      <div class="col-sm-10">
-    <%= f.text_field :username %>
-  </div>
-    </div>
-<div class="form-group">
-    <%= f.label :email %>
-      <div class="col-sm-10">
-    <%= f.text_field :email %>
-  </div>
-    </div>
-<div class="form-group">
-    <%= f.label :bio %>
-      <div class="col-sm-10">
-    <%= f.text_area :bio %>
-  </div>
-    </div>
-    <div class="form-group">
-    <%= f.label :gender %>
-      <div class="col-sm-10">
-    <%= f.select :gender, @user.gender_options, class: "form-group" %>
-      </div>
-</div>
-<div class="form-group">
-<%= f.label :company_id %>
-<div class="col-sm-10">
-  <%= f.collection_select :company_id, Company.all, :id, :name %>
-</div>
-</div>
   <br>
-<br>
-  <%= f.submit class: "btn btn-success"%>
+
+  <%= form_for @user, url: '/signup' do |f| %>
+
+      <div class="field">
+        <%= f.label :first_name %>
+        <div class="col-sm-10">
+          <%= f.text_field :first_name %>
+        </div>
+      </div>
+
+      <div class="field">
+      <%= f.label :last_name %>
+        <div class="col-sm-10">
+          <%= f.text_field :last_name %>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :email %>
+        <div class="col-sm-10">
+          <%= f.text_field :email %>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :password %>
+        <div class="col-sm-10">
+          <%= f.password_field :password %>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :password_confirmation %>
+        <div class="col-sm-10">
+          <%= f.password_field :password_confirmation %>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :gender %>
+        <div class="col-sm-10">
+          <%= f.select :gender, @user.gender_options, class: "form-group" %>
+        </div>
+      </div>
+
+      <%= f.label :company_id %>
+      <%= f.text_field :company_id, value: @company.name, readonly: true %>
+      <%= f.hidden_field :company_id, value: @company.id %>
+
+      <br><br>
+
+      <%= f.submit class: "btn btn-success"%>
 
     <% end %>
 
 </div>
-
-  </div>

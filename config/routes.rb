@@ -2,12 +2,17 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
   root 'application#welcome'
+
   resources :companies
-<<<<<<< HEAD
-  resources :users
   resources :answers, only: [:new, :create]
-=======
-  resources :teams, only: [:show, :edit, :update, :new, :create]
-  resources :users, only: [:index,:show, :edit, :update, :new, :create]
->>>>>>> 237b071311d2d96cb9d082b81db107abb44824a1
+  resources :users, only: [:destroy,:show, :edit, :update]
+
+  # user account management
+  get '/signup', to: 'users#new', as: 'signup'
+  post '/signup', to: 'users#create'
+
+  # sessions management
+  get '/login', to: 'sessions#new', as: 'login'
+  post '/sessions', to: 'sessions#create', as: 'sessions'
+  post '/logout', to: 'sessions#destroy', as: 'logout'
 end

@@ -18,14 +18,19 @@
 
     <h3>Answers:</h3>
     <% if @user.answers.count == 0 %>
-      <p>
-        Looks like you havent answered your companies questions yet, don't be
-        shy, it only take a few mins to add your answers and introduce yourself
-        to your new team!
-      </p>
-
-      <%= link_to "Answer Questions", new_answer_path(user_id: @user.id)%>
-
+      <% if current_user == @user%>
+        <p>
+          Looks like you havent answered your companies questions yet, don't be
+          shy, it only take a few mins to add your answers and introduce yourself
+          to your new team!
+        </p>
+        <%= link_to "Answer Questions", new_answer_path(user_id: @user.id), class: "btn btn-primary"%>
+      <% else %>
+        <p>
+          Looks like they haven't filled out their questions yet! Tell them to
+          go get it done!
+        </p>
+      <% end %>
     <% else %>
       <% @user.answers.each do |answer| %>
         <p>

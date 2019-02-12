@@ -1,9 +1,7 @@
 class UsersController < ApplicationController
   before_action :find_user, only: [:show, :edit, :update, :destroy]
-
-  def index
-    @users = User.all
-  end
+  before_action :require_login
+  skip_before_action :require_login, only: [:new, :create]
 
   def show
   end
@@ -21,15 +19,30 @@ class UsersController < ApplicationController
 
   def new
     @user = User.new
-  end
-  def create
-      @user = User.create(user_params)
-      if @user.valid?
-        redirect_to @user
+    #if a user who is creating a new user is logged in, ensure that user is being
+    # created is made part of their company
+    if logged_in?
+      @company = current_user.company
+    else
+      if params[:company_id]
+        @company = Company.find(params[:company_id])
       else
-        render :new
+        flash[:errors] = ["Your link does not contain a valid comapny ID, speak to
+          your admin and check you have copied your invite URL correctly"]
       end
-      # byebug
+    end
+  end
+
+  def create
+    user = User.new(user_params)
+    if user.valid?
+      user.save
+      session[:user_id] = user.id
+      redirect_to company_path(params[:company_id])
+    else
+      flash[:errors] = ['something went wrong, try again']
+      redirect_to signup_path + params[:company_id]
+    end
   end
 
   def destroy
@@ -44,7 +57,8 @@ class UsersController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit(:first_name, :last_name, :gender, :email, :user_name)
+    params.require(:user).permit(:first_name, :last_name, :gender, :email, :password, :password_confirmation,
+       :company_id)
   end
 
 end

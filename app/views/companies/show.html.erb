@@ -8,8 +8,18 @@
       <b>Bio:</b> <%= @company.bio %>
     </p>
 
-    <h3>Users:</h3>
-    <%= button_to "Add a User", "#{new_user_path}?company_id=#{@company.id}", method: :get, class: "btn btn-success" %><br>
+    <h3><%= pluralize(@company.users.count, "User") %>:</h3>
+
+    <p>
+      <i>
+        to add more users just send them this link:
+        <b>
+          <%= request.base_url %><%= signup_path(company_id: @company.id) %>
+        </b>
+      </i>
+    </p>
+
+     <br>
     <%= render partial: "users/users", locals: {users: @company.users} %>
 
   </div>

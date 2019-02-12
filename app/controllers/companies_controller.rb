@@ -1,4 +1,5 @@
 class CompaniesController < ApplicationController
+  before_action :require_login
   before_action :find_company, only: [:show, :edit, :update, :destroy]
 
   def index
@@ -6,7 +7,6 @@ class CompaniesController < ApplicationController
   end
 
   def show
-    @view = params[:view] ||= "teams"
   end
 
   def edit
@@ -46,6 +46,10 @@ class CompaniesController < ApplicationController
 
   def company_params
     params.require(:company).permit(:name, :bio)
+  end
+
+  def require_login
+    authorized?
   end
 
 end

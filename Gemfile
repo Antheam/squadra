@@ -3,7 +3,13 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.5.3'
 
-#bootstrap & jquery for styling and layout 
+#gems for slack
+gem 'slack-ruby-bot'
+gem 'celluloid-io'
+gem 'httparty'
+gem 'giphy'
+
+#bootstrap & jquery for styling and layout
 gem 'bootstrap', '~> 4.2.1'
 gem 'jquery-rails'
 
@@ -29,7 +35,7 @@ gem 'jbuilder', '~> 2.5'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
 # Use ActiveModel has_secure_password
-# gem 'bcrypt', '~> 3.1.7'
+gem 'bcrypt', '~> 3.1.7'
 
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'

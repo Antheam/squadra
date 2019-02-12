@@ -1,12 +1,12 @@
 class User < ApplicationRecord
+  has_secure_password
+
   belongs_to :company
   has_many :answers
-  has_many :user_teams
-  has_many :teams, through: :user_teams
+  accepts_nested_attributes_for :company
 
   validates :first_name, presence: true
   validates :last_name, presence: true
-  validates :username, uniqueness: true
   validates :email, uniqueness: true, format: { with: URI::MailTo::EMAIL_REGEXP, message: "only allows valid emails" }
   validates :company_id, presence: true
 

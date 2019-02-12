@@ -1,5 +1,5 @@
 class AnswersController < ApplicationController
-
+  before_action :require_login
   def new
     @user = User.find(params[:user_id])
     @questions = @user.company.questions

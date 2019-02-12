@@ -9,16 +9,16 @@ Company.create([
 ])
 
 User.create([
-  {first_name: "Chris", last_name: "Camacho", username: "cacamacho91",
-    gender: "Male", email: "cacamacho91@gmail.com", bio:"", company: Company.first},
-  {first_name: "Souley", last_name: "Sow", username: "souleyman",
-    gender: "Male", email: "souleymanesow@gmail.com", bio:"", company: Company.first},
-  {first_name: "Sam", last_name: "Barker", username: "bamsarker",
-    gender: "Male", email: "sam.barker@flatironschool.com", bio:"", company: Company.first},
-  {first_name: "Minha", last_name: "Koo", username: "kkooming",
-    gender: "Female", email: "kkooming2@gmail.com", bio:"", company: Company.first},
-  {first_name: "Ben", last_name: "Miller", username: "bmiller",
-    gender: "Male", email: "ben.miller@flatironschool.com", bio:"", company: Company.first}
+  {first_name: "Chris", last_name: "Camacho", gender: "Male", email: "cacamacho91@gmail.com",
+    company: Company.first, password: "password"},
+  {first_name: "Souley", last_name: "Sow", gender: "Male", email: "souleymanesow@gmail.com",
+    company: Company.first, password: "password"},
+  {first_name: "Sam", last_name: "Barker", gender: "Male", email: "sam.barker@flatironschool.com",
+    company: Company.first, password: "password"},
+  {first_name: "Minha", last_name: "Koo", gender: "Female", email: "kkooming2@gmail.com",
+    company: Company.first, password: "password"},
+  {first_name: "Ben", last_name: "Miller", gender: "Male", email: "ben.miller@flatironschool.com",
+    company: Company.first, password: "password"}
 ])
 
 Company.first.users << [User.first, User.second, User.third, User.fourth, User.fifth]
