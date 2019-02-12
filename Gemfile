@@ -3,11 +3,11 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.5.3'
 
-#gems for slack
-gem 'slack-ruby-bot'
-gem 'celluloid-io'
-gem 'httparty'
-gem 'giphy'
+#fill out seed data
+gem 'fabrication'
+gem 'faker', :git => 'https://github.com/stympy/faker.git', :branch => 'master'
+
+
 
 #bootstrap & jquery for styling and layout
 gem 'bootstrap', '~> 4.2.1'
