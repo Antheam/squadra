@@ -6,4 +6,18 @@ class Company < ApplicationRecord
   validates :name, uniqueness: true, presence: true, length: { in: 4..30 }
   validates :bio, length: { in: 6..240 }
 
+  #method to build quiz based on company questions
+  def build_quiz
+
+
+
+  end
+
+  #takes a question and builds a
+  def build_question(question)
+    
+  end
+
+
+
 end

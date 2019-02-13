@@ -15,7 +15,7 @@ User.create([
     company: Company.first, password: "password"}
 ])
 
-Company.first.users << [User.first, User.second, User.third, User.fourth, User.fifth]
+Company.first.users << [User.first, User.second]
 
 Question.create([
   {content: "Who inspires you?", active: true, q_type: "text" },
@@ -46,3 +46,29 @@ Company.first.questions << Question.all
 #   {content: "No, will never understand collecting", question: Question.all[8] , user: User.first},
 #   {content: "Aperol Spritz (in the summer)", question: Question.all[9] , user: User.first}
 # ])
+
+# Answer.create ([
+#   {content: "My Mum", question: Question.first , user: User.second},
+#   {content: "Costa Rica", question: Question.second , user: User.second},
+#   {content: "Elon Musk", question: Question.third , user: User.second},
+#   {content: "Truffle Pasta - Italy Road Trip 2018", question: Question.fourth , user: User.second},
+#   {content: "Superman - he sucks", question: Question.fifth , user: User.second},
+#   {content: "Rise Against", question: Question.all[5] , user: User.second},
+#   {content: "Scuba Diving", question: Question.all[6] , user: User.second},
+#   {content: "Poached, on muffins with smoked salmon!", question: Question.all[7] , user: User.second},
+#   {content: "No, will never understand collecting", question: Question.all[8] , user: User.second},
+#   {content: "Aperol Spritz (in the summer)", question: Question.all[9] , user: User.second}
+# ])
+
+Answer.create ([
+  {content: "My Mum", question: Question.first , user: User.third},
+  {content: "Costa Rica", question: Question.second , user: User.third},
+  {content: "Elon Musk", question: Question.third , user: User.third},
+  {content: "Truffle Pasta - Italy Road Trip 2018", question: Question.fourth , user: User.third},
+  {content: "Superman - he sucks", question: Question.fifth , user: User.third},
+  {content: "Rise Against", question: Question.all[5] , user: User.third},
+  {content: "Scuba Diving", question: Question.all[6] , user: User.third},
+  {content: "Poached, on muffins with smoked salmon!", question: Question.all[7] , user: User.third},
+  {content: "No, will never understand collecting", question: Question.all[8] , user: User.third},
+  {content: "Aperol Spritz (in the summer)", question: Question.all[9] , user: User.third}
+])
