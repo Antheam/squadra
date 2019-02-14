@@ -4,11 +4,97 @@
       <p>
         Welcome to Squadra, we help you onboard new starters easily to your
         business by building relationships and friendships that last.
+        <br>
+
+        Tell us a bit about company and you to get started...
       </p>
 
       <br>
 
-      <h3>Your Company Details:</h3>
-      <%= render "form" %>
+      <h5>Your Company Details:</h5>
+  <%= form_for @company do |f| %>
+      <div class="form-group row">
+        <div class="col-3">
+          <%= f.label :name %>
+        </div>
+        <div class="col-9">
+          <%= f.text_field :name, class: "form-control #{' is-invalid' if @company.errors[:name].any? }" %>
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <div class="col-3">
+          <%= f.label :bio %>
+        </div>
+        <div class="col-9">
+          <%= f.text_field :bio, class: "form-control #{' is-invalid' if @company.errors[:bio].any? }" %>
+        </div>
+      </div>
+
+      <h5>And a bit about you...</h5><br>
+
+      <%= f.fields_for :users do |user| %>
+
+      <div class="form-group row">
+        <div class="col-3">
+          <%= user.label :first_name %>
+        </div>
+        <div class="col-9">
+          <%= user.text_field :first_name, class: "form-control #{' is-invalid' if @user.errors[:first_name].any? }" %>
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <div class="col-3">
+          <%= user.label :last_name %>
+        </div>
+        <div class="col-9">
+          <%= user.text_field :last_name, class: "form-control #{' is-invalid' if @user.errors[:last_name].any? }" %>
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <div class="col-3">
+          <%= user.label :email %>
+        </div>
+        <div class="col-9">
+          <%= user.text_field :email, class: "form-control #{' is-invalid' if @user.errors[:email].any? }" %>
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <div class="col-3">
+          <%= user.label :password %>
+        </div>
+        <div class="col-9">
+          <%= user.password_field :password, class: "form-control #{' is-invalid' if @user.errors[:password].any? }" %>
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <div class="col-3">
+          <%= user.label :password_confirmation %>
+        </div>
+        <div class="col-9">
+          <%= user.password_field :password_confirmation, class: "form-control #{' is-invalid' if @user.errors[:password].any? }" %>
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <div class="col-3">
+          <%= user.label :gender %>
+        </div>
+        <div class="col-9">
+          <%= user.select :gender, @user.gender_options, class: "form-control" %>
+        </div>
+      </div>
+      <% end %>
+
+
+      <%= f.submit class: "btn btn-success"%>
+
+
+
+      <% end %>
   </div>
 </section>

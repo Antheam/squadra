@@ -3,6 +3,8 @@
       <br>
 
       <h3>Edit Company Details:</h3>
-      <%= render "form" %>
+      <%= form_for @company do |f| %>
+        <%= render "form" %>
+      <% end %>
   </div>
 </section>

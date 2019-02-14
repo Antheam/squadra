@@ -1,6 +1,9 @@
 class CompaniesController < ApplicationController
   before_action :require_login
+  before_action :admin?, only: [:index]
+  skip_before_action :require_login, only: [:new, :create]
   before_action :find_company, only: [:show, :edit, :update, :destroy]
+
 
   def index
     @companies = Company.all
@@ -22,13 +25,18 @@ class CompaniesController < ApplicationController
 
   def new
     @company = Company.new
+    @user = User.new
+    @company.users << @user
   end
 
   def create
-    company = Company.new(company_params)
-    if company.save
-      redirect_to company_path(company)
+    @company = Company.new(company_params)
+    if @company.save
+      session[:user_id] = @company.users.first.id
+      redirect_to company_path(@company)
     else
+      flash[:errors] = @company.errors.full_messages
+      @user = @company.users.first
       render :new
     end
   end
@@ -45,7 +53,14 @@ class CompaniesController < ApplicationController
   end
 
   def company_params
-    params.require(:company).permit(:name, :bio)
+    params.require(:company).permit(:name, :bio, users_attributes: [
+      :first_name,
+      :last_name,
+      :email,
+      :password,
+      :password_confirmation,
+      :gender
+      ])
   end
 
   def require_login

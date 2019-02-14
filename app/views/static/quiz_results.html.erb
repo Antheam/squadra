@@ -1,0 +1,35 @@
+<h1>Quiz Results</h1>
+<br>
+<h1>
+  You Scored <%= @score[:correct] %> / <%= @score[:of]  %>
+</h1>
+
+
+<h3>
+
+</h3>
+
+<% counter = 0 %>
+
+<% @questions.each do |question| %>
+  <p>
+    Q: <%= question %>
+  </p>
+  <p>
+    Your answer:
+    <b>
+      <%= @responses[counter] %>
+    </b>
+  </p>
+  <p>
+    Actaul Answer:
+    <b>
+      <%= @answers[counter] %>
+    </b>
+  </p>
+  <br>
+  <% counter += 1 %>
+<% end %>
+
+<%= link_to "Play again", new_quiz_path, class: "btn btn-primary" %>
+<%= link_to "Back to Home", companies_path, class: "btn btn-light" %>

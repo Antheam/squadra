@@ -1,5 +1,6 @@
 class AnswersController < ApplicationController
   before_action :require_login
+
   def new
     @user = User.find(params[:user_id])
     @questions = @user.company.questions
@@ -11,6 +12,7 @@ class AnswersController < ApplicationController
     params[:answers].each do |q_id, content|
       Answer.create(content: content, user_id: params[:user_id], question_id: q_id)
     end
+    #Send answers to slack
     redirect_to user_path(params[:user_id])
   end
 

@@ -10,9 +10,9 @@ Company.create([
 
 User.create([
   {first_name: "Chris", last_name: "Camacho", gender: "Male", email: "cacamacho91@gmail.com",
-    company: Company.first, password: "password"},
+    company: Company.first, password: "password", admin:true},
   {first_name: "Souley", last_name: "Sow", gender: "Male", email: "souleymanesow@gmail.com",
-    company: Company.first, password: "password"}
+    company: Company.first, password: "password", admin:true}
 ])
 
 Company.first.users << [User.first, User.second]
@@ -34,41 +34,46 @@ end
 
 Company.first.questions << Question.all
 
-# Answer.create ([
-#   {content: "My Mum", question: Question.first , user: User.first},
-#   {content: "Costa Rica", question: Question.second , user: User.first},
-#   {content: "Elon Musk", question: Question.third , user: User.first},
-#   {content: "Truffle Pasta - Italy Road Trip 2018", question: Question.fourth , user: User.first},
-#   {content: "Superman - he sucks", question: Question.fifth , user: User.first},
-#   {content: "Rise Against", question: Question.all[5] , user: User.first},
-#   {content: "Scuba Diving", question: Question.all[6] , user: User.first},
-#   {content: "Poached, on muffins with smoked salmon!", question: Question.all[7] , user: User.first},
-#   {content: "No, will never understand collecting", question: Question.all[8] , user: User.first},
-#   {content: "Aperol Spritz (in the summer)", question: Question.all[9] , user: User.first}
-# ])
-
-# Answer.create ([
-#   {content: "My Mum", question: Question.first , user: User.second},
-#   {content: "Costa Rica", question: Question.second , user: User.second},
-#   {content: "Elon Musk", question: Question.third , user: User.second},
-#   {content: "Truffle Pasta - Italy Road Trip 2018", question: Question.fourth , user: User.second},
-#   {content: "Superman - he sucks", question: Question.fifth , user: User.second},
-#   {content: "Rise Against", question: Question.all[5] , user: User.second},
-#   {content: "Scuba Diving", question: Question.all[6] , user: User.second},
-#   {content: "Poached, on muffins with smoked salmon!", question: Question.all[7] , user: User.second},
-#   {content: "No, will never understand collecting", question: Question.all[8] , user: User.second},
-#   {content: "Aperol Spritz (in the summer)", question: Question.all[9] , user: User.second}
-# ])
+Answer.create ([
+  {content: "My Mum", question: Question.all[0], user: User.first},
+  {content: "Wine", question: Question.all[1] , user: User.first},
+  {content: "Costa Rica", question: Question.all[2] , user: User.first},
+  {content: "Cats", question: Question.all[3] , user: User.first},
+  {content: "Superman - he sucks", question: Question.all[4] , user: User.first},
+  {content: "Rise Against", question: Question.all[5] , user: User.first},
+  {content: "Poached, on muffins with smoked salmon!", question: Question.all[6] , user: User.first},
+  {content: "FrontEnd", question: Question.all[7] , user: User.first}
+])
 
 Answer.create ([
-  {content: "My Mum", question: Question.first , user: User.third},
-  {content: "Costa Rica", question: Question.second , user: User.third},
-  {content: "Elon Musk", question: Question.third , user: User.third},
-  {content: "Truffle Pasta - Italy Road Trip 2018", question: Question.fourth , user: User.third},
-  {content: "Superman - he sucks", question: Question.fifth , user: User.third},
+  {content: Faker::TvShows::GameOfThrones.character, question: Question.all[0], user: User.second},
+  {content: "Wine", question: Question.all[1] , user: User.second},
+  {content: "Costa Rica", question: Question.all[2] , user: User.second},
+  {content: "Cats", question: Question.all[3] , user: User.second},
+  {content:  Faker::TvShows::DrWho.character, question: Question.all[4] , user: User.second},
+  {content: "Rise Against", question: Question.all[5] , user: User.second},
+  {content: "Poached, on muffins with smoked salmon!", question: Question.all[6] , user: User.second},
+  {content: "BackEnd", question: Question.all[7] , user: User.second}
+])
+
+Answer.create ([
+  {content: Faker::TvShows::GameOfThrones.character, question: Question.all[0], user: User.third},
+  {content: "Wine", question: Question.all[1] , user: User.third},
+  {content: "Costa Rica", question: Question.all[2] , user: User.third},
+  {content: "Dogs", question: Question.all[3] , user: User.third},
+  {content: Faker::TvShows::DrWho.character, question: Question.all[4] , user: User.third},
   {content: "Rise Against", question: Question.all[5] , user: User.third},
-  {content: "Scuba Diving", question: Question.all[6] , user: User.third},
-  {content: "Poached, on muffins with smoked salmon!", question: Question.all[7] , user: User.third},
-  {content: "No, will never understand collecting", question: Question.all[8] , user: User.third},
-  {content: "Aperol Spritz (in the summer)", question: Question.all[9] , user: User.third}
+  {content: "Poached, on muffins with smoked salmon!", question: Question.all[6] , user: User.third},
+  {content: "FrontEnd", question: Question.all[7] , user: User.third}
+])
+
+Answer.create ([
+  {content: Faker::TvShows::GameOfThrones.character, question: Question.all[0], user: User.fourth},
+  {content: "Beer", question: Question.all[1] , user: User.fourth},
+  {content: "Costa Rica", question: Question.all[2] , user: User.fourth},
+  {content: "Dogs", question: Question.all[3] , user: User.fourth},
+  {content: Faker::TvShows::DrWho.character, question: Question.all[4] , user: User.fourth},
+  {content: "Rise Against", question: Question.all[5] , user: User.fourth},
+  {content: "Poached, on muffins with smoked salmon!", question: Question.all[6] , user: User.fourth},
+  {content: "FrontEnd", question: Question.all[7] , user: User.fourth}
 ])
