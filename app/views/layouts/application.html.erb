@@ -24,6 +24,9 @@
         <ul class="navbar-nav ml-auto">
           <% if logged_in? %>
             <li class="nav-item ">
+              <%= link_to "Take a Quiz!", quiz_home_path, class: "nav-link btn btn-sm btn-success" %>
+            </li>
+            <li class="nav-item ">
               <%= link_to "log out", logout_path, method: "post", class: "nav-link" %>
             </li>
             <li class="nav-item ">

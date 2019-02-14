@@ -22,8 +22,6 @@ class AnswersController < ApplicationController
     redirect_to user_path(params[:user_id])
   end
 
-  #thing sot be generated: title, title_link, fields
-
   private
 
   def answer_params

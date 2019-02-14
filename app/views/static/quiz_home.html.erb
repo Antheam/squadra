@@ -1,5 +1,6 @@
-<h1>Quiz Time</h1>
+<div class="container">
 
+<h1>Quiz Time</h1>
 <p>
   Think you know your team? Take the Squadra quiz and find out how much you
   really know!
@@ -15,4 +16,17 @@
   (There is a maximum of 8 questions)
 </p>
 
-<%= link_to "Quiz Me Up", new_quiz_path, class:"btn-lg btn-success" %>
+<% if current_user.company.ready_for_quiz? %>
+  <%= link_to "Quiz Me Up", new_quiz_path, class:"btn- btn-success" %>
+<% else %>
+  <br><br>
+  <h3>Quiz Not Ready!</h3>
+  <p>
+    Looks like you haven't got enough colleagues who have onboarded, at least 3
+    people need to fill in their information.
+    <br>
+    Go get them to sign in!
+  </p>
+<% end %>
+
+</div>
