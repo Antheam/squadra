@@ -7,11 +7,10 @@ ruby '2.5.3'
 gem 'fabrication'
 gem 'faker', :git => 'https://github.com/stympy/faker.git', :branch => 'master'
 
-
-
-#bootstrap & jquery for styling and layout
+#bootstrap, bootswatch & jquery for styling and layout
 gem 'bootstrap', '~> 4.2.1'
 gem 'jquery-rails'
+gem "bootswatch", github: "thomaspark/bootswatch"
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.2'

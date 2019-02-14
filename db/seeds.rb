@@ -34,46 +34,46 @@ end
 
 Company.first.questions << Question.all
 
-Answer.create ([
-  {content: "My Mum", question: Question.all[0], user: User.first},
-  {content: "Wine", question: Question.all[1] , user: User.first},
-  {content: "Costa Rica", question: Question.all[2] , user: User.first},
-  {content: "Cats", question: Question.all[3] , user: User.first},
-  {content: "Superman - he sucks", question: Question.all[4] , user: User.first},
-  {content: "Rise Against", question: Question.all[5] , user: User.first},
-  {content: "Poached, on muffins with smoked salmon!", question: Question.all[6] , user: User.first},
-  {content: "FrontEnd", question: Question.all[7] , user: User.first}
-])
-
-Answer.create ([
-  {content: Faker::TvShows::GameOfThrones.character, question: Question.all[0], user: User.second},
-  {content: "Wine", question: Question.all[1] , user: User.second},
-  {content: "Costa Rica", question: Question.all[2] , user: User.second},
-  {content: "Cats", question: Question.all[3] , user: User.second},
-  {content:  Faker::TvShows::DrWho.character, question: Question.all[4] , user: User.second},
-  {content: "Rise Against", question: Question.all[5] , user: User.second},
-  {content: "Poached, on muffins with smoked salmon!", question: Question.all[6] , user: User.second},
-  {content: "BackEnd", question: Question.all[7] , user: User.second}
-])
-
-Answer.create ([
-  {content: Faker::TvShows::GameOfThrones.character, question: Question.all[0], user: User.third},
-  {content: "Wine", question: Question.all[1] , user: User.third},
-  {content: "Costa Rica", question: Question.all[2] , user: User.third},
-  {content: "Dogs", question: Question.all[3] , user: User.third},
-  {content: Faker::TvShows::DrWho.character, question: Question.all[4] , user: User.third},
-  {content: "Rise Against", question: Question.all[5] , user: User.third},
-  {content: "Poached, on muffins with smoked salmon!", question: Question.all[6] , user: User.third},
-  {content: "FrontEnd", question: Question.all[7] , user: User.third}
-])
-
-Answer.create ([
-  {content: Faker::TvShows::GameOfThrones.character, question: Question.all[0], user: User.fourth},
-  {content: "Beer", question: Question.all[1] , user: User.fourth},
-  {content: "Costa Rica", question: Question.all[2] , user: User.fourth},
-  {content: "Dogs", question: Question.all[3] , user: User.fourth},
-  {content: Faker::TvShows::DrWho.character, question: Question.all[4] , user: User.fourth},
-  {content: "Rise Against", question: Question.all[5] , user: User.fourth},
-  {content: "Poached, on muffins with smoked salmon!", question: Question.all[6] , user: User.fourth},
-  {content: "FrontEnd", question: Question.all[7] , user: User.fourth}
-])
+# Answer.create ([
+#   {content: "My Mum", question: Question.all[0], user: User.first},
+#   {content: "Wine", question: Question.all[1] , user: User.first},
+#   {content: "Costa Rica", question: Question.all[2] , user: User.first},
+#   {content: "Cats", question: Question.all[3] , user: User.first},
+#   {content: "Superman - he sucks", question: Question.all[4] , user: User.first},
+#   {content: "Rise Against", question: Question.all[5] , user: User.first},
+#   {content: "Poached, on muffins with smoked salmon!", question: Question.all[6] , user: User.first},
+#   {content: "FrontEnd", question: Question.all[7] , user: User.first}
+# ])
+#
+# Answer.create ([
+#   {content: Faker::TvShows::GameOfThrones.character, question: Question.all[0], user: User.second},
+#   {content: "Wine", question: Question.all[1] , user: User.second},
+#   {content: "Costa Rica", question: Question.all[2] , user: User.second},
+#   {content: "Cats", question: Question.all[3] , user: User.second},
+#   {content:  Faker::TvShows::DrWho.character, question: Question.all[4] , user: User.second},
+#   {content: "Rise Against", question: Question.all[5] , user: User.second},
+#   {content: "Poached, on muffins with smoked salmon!", question: Question.all[6] , user: User.second},
+#   {content: "BackEnd", question: Question.all[7] , user: User.second}
+# ])
+#
+# Answer.create ([
+#   {content: Faker::TvShows::GameOfThrones.character, question: Question.all[0], user: User.third},
+#   {content: "Wine", question: Question.all[1] , user: User.third},
+#   {content: "Costa Rica", question: Question.all[2] , user: User.third},
+#   {content: "Dogs", question: Question.all[3] , user: User.third},
+#   {content: Faker::TvShows::DrWho.character, question: Question.all[4] , user: User.third},
+#   {content: "Rise Against", question: Question.all[5] , user: User.third},
+#   {content: "Poached, on muffins with smoked salmon!", question: Question.all[6] , user: User.third},
+#   {content: "FrontEnd", question: Question.all[7] , user: User.third}
+# ])
+#
+# Answer.create ([
+#   {content: Faker::TvShows::GameOfThrones.character, question: Question.all[0], user: User.fourth},
+#   {content: "Beer", question: Question.all[1] , user: User.fourth},
+#   {content: "Costa Rica", question: Question.all[2] , user: User.fourth},
+#   {content: "Dogs", question: Question.all[3] , user: User.fourth},
+#   {content: Faker::TvShows::DrWho.character, question: Question.all[4] , user: User.fourth},
+#   {content: "Rise Against", question: Question.all[5] , user: User.fourth},
+#   {content: "Poached, on muffins with smoked salmon!", question: Question.all[6] , user: User.fourth},
+#   {content: "FrontEnd", question: Question.all[7] , user: User.fourth}
+# ])
