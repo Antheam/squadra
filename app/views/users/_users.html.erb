@@ -9,7 +9,7 @@
 
 
 <% newest_user = users.first %>
-<div class="card text-center">
+<div class="card text-center<%= " border-warning" if !newest_user.has_answered_all_q %>">
   <h5 class="card-header">👋 ...Say hi our latest team member... 👋</h5>
   <div class="card-body">
     <h5 class="card-title"><b><%= newest_user.full_name %></b></h5>
@@ -29,7 +29,7 @@
 
 <div class="card-columns">
     <% users[1..-1].each do |user| %>
-      <div class="card <%= " border-danger" if !user.has_answered_all_q %>">
+      <div class="card <%= " border-warning" if !user.has_answered_all_q %>">
          <div class="card-body">
            <h5 class="card-title"><%= link_to user.full_name, user_path(user) %></h5>
            <p class="card-text">
