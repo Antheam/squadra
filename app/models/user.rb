@@ -17,4 +17,8 @@ class User < ApplicationRecord
     ["Male", "Female", "Non-Binary", "Rather Not Say"]
   end
 
+  def has_answered_all_q
+    answers.count == company.questions.count
+  end
+
 end

@@ -16,7 +16,7 @@
         <%= f.label :first_name %>
       </div>
       <div class="col-9">
-        <%= f.text_field :first_name, class: "form-control" %>
+        <%= f.text_field :first_name, class: "form-control #{' is-invalid' if @user.errors[:first_name].any? }" %>
       </div>
     </div>
 
@@ -25,7 +25,7 @@
         <%= f.label :last_name %>
       </div>
       <div class="col-9">
-        <%= f.text_field :last_name, class: "form-control" %>
+        <%= f.text_field :last_name, class: "form-control #{' is-invalid' if @user.errors[:last_name].any? }" %>
       </div>
     </div>
 
@@ -34,7 +34,7 @@
         <%= f.label :email %>
       </div>
       <div class="col-9">
-        <%= f.text_field :email, class: "form-control" %>
+        <%= f.text_field :email, class: "form-control #{' is-invalid' if @user.errors[:email].any? }" %>
       </div>
     </div>
 
@@ -43,7 +43,7 @@
         <%= f.label :password %>
       </div>
       <div class="col-9">
-        <%= f.password_field :password, class: "form-control" %>
+        <%= f.password_field :password, class: "form-control #{' is-invalid' if @user.errors[:password].any? }" %>
       </div>
     </div>
 
@@ -52,7 +52,7 @@
         <%= f.label :password_confirmation %>
       </div>
       <div class="col-9">
-        <%= f.password_field :password_confirmation, class: "form-control" %>
+        <%= f.password_field :password_confirmation, class: "form-control #{' is-invalid' if @user.errors[:password].any? }" %>
       </div>
     </div>
 

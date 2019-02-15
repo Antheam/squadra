@@ -97,11 +97,11 @@ class Question < ApplicationRecord
     return false if !valid_for_quiz?(company_id)
     answers = self.get_3_random_answers(company_id)
     quiz_question = Hash.new
-    quiz_question[:answer] = answers.sample.user.email
-    question_prompt = answers.find{|a| a.user.email == quiz_question[:answer]}.content
+    quiz_question[:answer] = answers.sample.user.full_name
+    question_prompt = answers.find{|a| a.user.full_name == quiz_question[:answer]}.content
     quiz_question[:question] = "Who answered '#{self.content}' ..with.. '#{question_prompt}'"
     quiz_question[:options] = []
-    answers.each { |answer| quiz_question[:options] << answer.user.email }
+    answers.each { |answer| quiz_question[:options] << answer.user.full_name }
     quiz_question
   end
 end

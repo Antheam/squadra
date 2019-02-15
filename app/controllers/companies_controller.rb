@@ -10,6 +10,10 @@ class CompaniesController < ApplicationController
   end
 
   def show
+    if current_user.answers.count < current_user.company.questions.count
+      @answers_needed = true
+    end
+    @users = current_user.company.users.sort_by{|u| u.created_at}.reverse
   end
 
   def edit

@@ -1,22 +1,28 @@
-<h1>New Quiz</h1>
+<div class="container">
+  <h1>New Quiz</h1>
 
-<%= form_tag quiz_results_path, method: :post do %>
+  <%= form_tag quiz_results_path, method: :post do %>
 
-  <% @quiz_questions.each do |question|  %>
+    <% @quiz_questions.each do |question|  %>
 
-  <div class="form-group row">
-    <%= label_tag "quiz[responses][]", question[:question] %>
-    <div class="col-sm-12">
-      <%= select_tag "quiz[responses][]",
-      options_for_select(question[:options]), class: "form-control"%>
+
+    <div class="form-group row">
+      <div class="col-12">
+        <%= label_tag "quiz[responses][]", question[:question] %>
+      </div>
+      <div class="col-12">
+        <%= select_tag "quiz[responses][]",
+        options_for_select(question[:options]), class: "form-control", :prompt => ""%>
+      </div>
     </div>
-    <!-- hidden fields to handle responses without using JS-->
-    <%= hidden_field_tag 'quiz[questions][]', question[:question] %>
-    <%= hidden_field_tag 'quiz[answers][]', question[:answer] %>
+      <!-- hidden fields to handle responses without using JS-->
+      <%= hidden_field_tag 'quiz[questions][]', question[:question] %>
+      <%= hidden_field_tag 'quiz[answers][]', question[:answer] %>
 
-  </div>
-    <br>
+
+      <br>
+    <% end %>
+    <%= submit_tag "Submit Answers", class: "btn btn-primary" %>
   <% end %>
-  <br>
-  <%= submit_tag "Submit Answers", class: "btn btn-primary" %>
-<% end %>
+</div>
+<br><br>

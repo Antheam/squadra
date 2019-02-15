@@ -9,7 +9,7 @@
     </p>
 
     <div class="form-group">
-      <%= form_tag answers_path(user_id: @user.id) do |f| %>
+      <%= form_tag answers_path(user_id: @user.id), :html => {:autocomplete => "off"} do |f| %>
 
         <% @answers.each do |answer| %>
 
@@ -19,7 +19,7 @@
 
             <!-- display text questions as text fields -->
             <% if answer.question.q_type == "text" %>
-              <%= text_area_tag "answers[#{answer.question_id}]",nil, class: "form-control"%>
+              <%= text_area_tag "answers[#{answer.question_id}]", nil, class: "form-control", :autocomplete => :off %>
             <% end %>
 
             <!-- display multi questions as selects with their correct options -->

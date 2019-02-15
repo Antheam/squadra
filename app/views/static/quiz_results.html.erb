@@ -1,35 +1,50 @@
-<h1>Quiz Results</h1>
-<br>
-<h1>
-  You Scored <%= @score[:correct] %> / <%= @score[:of]  %>
-</h1>
+<div class="container">
 
+  <h1>Quiz Results</h1>
+  <h2>
+    You Scored <%= @score[:correct] %> / <%= @score[:of]  %>
+  </h2>
+  <hr>
+    <% if @score[:correct].to_f/@score[:of].to_f > 0.7 %>
+      Wow! Well done, you really know your team-mates!
+    <% elsif @score[:correct].to_f/@score[:of].to_f > 0.5%>
+      Not bad, why not spend a bit more time at the coffee machine and get to
+      know your team a bit more, then come back and try again?
+    <% else %>
+      Looks like you need to talk to your team more and get to know them! We
+      suggest a team building event!
+    <% end %>
+  <hr>
 
-<h3>
+  <% counter = 0 %>
+  <div class="card-columns">
+    <% @questions.each do |question| %>
 
-</h3>
+      <div class="card <%= @responses[counter] != @answers[counter] ? 'text-white bg-danger mb-3' : 'card border-success mb-3'  %>">
+         <div class="card-body">
+           <h5 class="card-title"> Q: <%= question %> </h5>
+           <p class="card-text">
+             Your answer:
+             <b>
+               <%= @responses[counter] %>
+             </b>
+            </p>
+         </div>
+         <div class="card-footer">
+           Correct answer:
+           <b>
+             <%= @answers[counter] %>
+           </b>
+         </div>
+       </div>
 
-<% counter = 0 %>
+      <% counter += 1 %>
+    <% end %>
 
-<% @questions.each do |question| %>
-  <p>
-    Q: <%= question %>
-  </p>
-  <p>
-    Your answer:
-    <b>
-      <%= @responses[counter] %>
-    </b>
-  </p>
-  <p>
-    Actaul Answer:
-    <b>
-      <%= @answers[counter] %>
-    </b>
-  </p>
-  <br>
-  <% counter += 1 %>
-<% end %>
+  </div>
 
-<%= link_to "Play again", new_quiz_path, class: "btn btn-primary" %>
-<%= link_to "Back to Home", companies_path, class: "btn btn-light" %>
+  <hr>
+
+  <%= link_to "Play again", new_quiz_path, class: "btn btn-primary" %>
+  <%= link_to "Back to Home", root_path, class: "btn btn-light" %>
+</div>

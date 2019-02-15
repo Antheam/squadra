@@ -1,7 +1,7 @@
 class SessionsController < ApplicationController
-
   #presents the login form
   def new
+    redirect_to company_path(current_user.company) if logged_in?
   end
 
   #handles login authentication

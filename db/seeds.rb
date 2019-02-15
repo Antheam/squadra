@@ -35,16 +35,16 @@ Question.create([
 
 Company.first.questions << Question.all
 
-# Answer.create ([
-#   {content: "Elon Musk, what a beast", question: Question.all[0], user: User.first},
-#   {content: "Wine", question: Question.all[1] , user: User.first},
-#   {content: "Costa Rica", question: Question.all[2] , user: User.first},
-#   {content: "Cats", question: Question.all[3] , user: User.first},
-#   {content: "Superman - he is the worst", question: Question.all[4] , user: User.first},
-#   {content: "Pink Floyd", question: Question.all[5] , user: User.first},
-#   {content: "Poached, on muffins with smoked salmon!", question: Question.all[6] , user: User.first},
-#   {content: "FrontEnd", question: Question.all[7] , user: User.first}
-# ])
+Answer.create ([
+  {content: "Elon Musk, what a beast", question: Question.all[0], user: User.first},
+  {content: "Wine", question: Question.all[1] , user: User.first},
+  {content: "Costa Rica", question: Question.all[2] , user: User.first},
+  {content: "Cats", question: Question.all[3] , user: User.first},
+  {content: "Superman - he is the worst", question: Question.all[4] , user: User.first},
+  {content: "Pink Floyd", question: Question.all[5] , user: User.first},
+  {content: "Poached, on muffins with smoked salmon!", question: Question.all[6] , user: User.first},
+  {content: "FrontEnd", question: Question.all[7] , user: User.first}
+])
 
 Answer.create ([
   {content: "Michelle Obama", question: Question.all[0], user: User.second},

@@ -17,7 +17,7 @@
 </p>
 
 <% if current_user.company.ready_for_quiz? %>
-  <%= link_to "Quiz Me Up", new_quiz_path, class:"btn- btn-success" %>
+  <%= link_to "Quiz Me Up", new_quiz_path, class:"btn-lg btn-success" %>
 <% else %>
   <br><br>
   <h3>Quiz Not Ready!</h3>

@@ -20,29 +20,32 @@ class UsersController < ApplicationController
 
   def new
     @user = User.new
-    #if a user who is creating a new user is logged in, ensure that user is being
-    # created is made part of their company
-    if logged_in?
-      @company = current_user.company
+
+    #If a user is being created they have been sent a link, they should not be
+    #  already logged in - if they are they will be signed out and when they try to create
+    #  another account they will be told they already exist in the DB
+    session.delete :user_id
+
+    if params[:company_id] && Company.exists?(id: params[:company_id])
+      @company = Company.find(params[:company_id])
     else
-      if params[:company_id]
-        @company = Company.find(params[:company_id])
-      else
-        flash[:errors] = ["Your link does not contain a valid comapny ID, speak to
-          your admin and check you have copied your invite URL correctly"]
-      end
+      flash[:errors] = ["Your link does not contain a valid comapny ID, speak to
+        your admin and check you have copied your invite URL correctly"]
+      redirect_to root_path
     end
+
   end
 
   def create
-    user = User.new(user_params)
-    if user.valid?
-      user.save
-      session[:user_id] = user.id
-      redirect_to company_path(params[:company_id])
+    @user = User.new(user_params)
+    @company = @user.company
+
+    if @user.save
+      session[:user_id] = @user.id
+      redirect_to company_path(@company)
     else
-      flash[:errors] = ['something went wrong, try again']
-      redirect_to signup_path + params[:company_id]
+      flash.now[:errors] = @user.errors.full_messages
+      render :new
     end
   end
 

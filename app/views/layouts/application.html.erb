@@ -27,10 +27,10 @@
               <%= link_to "Take a Quiz!", quiz_home_path, class: "nav-link btn btn-sm btn-primary" %>
             </li>
             <li class="nav-item ">
-              <%= link_to "log out", logout_path, method: "post", class: "nav-link" %>
+              <%= link_to "my profile", user_path(current_user.id), class: "nav-link" %>
             </li>
             <li class="nav-item ">
-              <%= link_to "my account", user_path(current_user.id), class: "nav-link" %>
+              <%= link_to "log out", logout_path, method: "post", class: "nav-link" %>
             </li>
             <% else %>
             <li class="nav-item ">

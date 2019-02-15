@@ -1,3 +1,4 @@
+
 <!-- Content to display empty state if no teams exist fro company yet -->
 <% if users.count == 0 %>
   <p>
@@ -6,43 +7,46 @@
 <!-- Content to display table containing teams -->
 <% else %>
 
-<div class="card">
-  <h5 class="card-header">Meet our latest team member.... 🥁🥁🥁</h5>
+
+<% newest_user = users.first %>
+<div class="card text-center">
+  <h5 class="card-header">👋 ...Say hi our latest team member... 👋</h5>
   <div class="card-body">
-    <h5 class="card-title"><b>Chris Camacho</b></h5>
-    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-    <a href="#" class="btn btn-info">Checkout Their Profile</a>
+    <h5 class="card-title"><b><%= newest_user.full_name %></b></h5>
+    <p class="card-text">
+      <b><%= newest_user.first_name %></b> joined us at <b><%= newest_user.company.name %></b>
+      <%= time_ago_in_words newest_user.created_at %> ago. Please give them a warm
+      welcome and stop by to introduce yourself and make them feel at home!
+
+    </p>
+    <%= link_to "Checkout Their Full Profile", user_path(newest_user), class: "btn btn-info" %>
   </div>
 </div>
 
+<br>
+<hr>
+<br>
 
-  <div class="table-responsive">
-    <table class="table">
-      <thead>
-        <tr>
-          <th scope="col">Email</th>
-          <th scope="col">First Name</th>
-          <th scope="col">Last Name</th>
-          <th scope="col">Created</th>
-          <th scope="col">Updated</th>
-          <th></th>
-        </tr>
-      </thead>
-      <tbody>
-        <% users.each do |user| %>
-        <tr>
-          <th scope="row"><%= link_to user.email, user_path(user) %></th>
-          <td><%= user.first_name %></td>
-          <td><%= user.last_name %></td>
-          <td> <%= time_ago_in_words(user.created_at) + " ago" %> </td>
-          <td> <%= time_ago_in_words(user.updated_at) + " ago" %> </td>
-          <td>
-            <%= link_to 'Delete', user_path(user), method: :delete,
-                data: { confirm: 'Are you sure?' } %>
-          </td>
-        </tr>
-        <% end %>
-      </tbody>
-    </table>
+<div class="card-columns">
+    <% users[1..-1].each do |user| %>
+      <div class="card <%= " border-danger" if !user.has_answered_all_q %>">
+         <div class="card-body">
+           <h5 class="card-title"><%= link_to user.full_name, user_path(user) %></h5>
+           <p class="card-text">
+             <b><%= user.first_name %></b> joined the team <%= time_ago_in_words(user.created_at)%> ago.
+
+             <% if user.has_answered_all_q %>
+               Check out their answers to our onbaording questions!
+             <% else %>
+               Get them to answer their onboarding questions...
+             <% end %>
+           </p>
+         </div>
+         <div class="card-footer">
+           <small class="text-muted">Last updated <%= time_ago_in_words(user.updated_at)%> ago</small>
+         </div>
+       </div>
+    <% end %>
+
   </div>
 <% end %>
