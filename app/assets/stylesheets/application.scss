@@ -12,6 +12,37 @@
  *
  */
  // Custom bootstrap variables must be set or imported *before* bootstrap.
- @import "lux/variables";
+ @import "flatly/variables";
  @import "bootstrap";
- @import "lux/bootswatch";
+ @import "flatly/bootswatch";
+
+  .hero {
+   	background: url('https://images.unsplash.com/photo-1499540633125-484965b60031?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1351&q=80') no-repeat center center fixed;
+     background-image: url('https://images.unsplash.com/photo-1499540633125-484965b60031?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1351&q=80');
+     background-repeat: no-repeat;
+     background-position: center;
+     background-attachment: fixed;
+     webkit-background-size: cover;
+     -moz-background-size: cover;
+     -o-background-size: cover;
+     background-size: cover;
+     height:100%;
+     width:100%;
+   }
+   @media (max-width: 768px) {
+     body { height:100vh; }
+   }
+   .hero_heading {
+     color: AliceBlue;
+   }
+   .hero_text{
+     color: Gainsboro ;
+   }
+   .footer {
+   position: fixed;
+   bottom: 0;
+   background: rgba(0, 0, 0, 0.5);
+   color: #f1f1f1;
+   width: 100%;
+   padding: 20px;
+ }

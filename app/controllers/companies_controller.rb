@@ -19,6 +19,7 @@ class CompaniesController < ApplicationController
     if @company.update(company_params)
       redirect_to company_path(@company)
     else
+      flash.now[:errors] = @company.errors.full_messages
       render :edit
     end
   end
@@ -35,7 +36,7 @@ class CompaniesController < ApplicationController
       session[:user_id] = @company.users.first.id
       redirect_to company_path(@company)
     else
-      flash[:errors] = @company.errors.full_messages
+      flash.now[:errors] = @company.errors.full_messages
       @user = @company.users.first
       render :new
     end

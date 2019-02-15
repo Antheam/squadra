@@ -21,10 +21,10 @@
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarResponsive">
-        <ul class="navbar-nav ml-auto">
+        <ul class="navbar-nav ml-auto ">
           <% if logged_in? %>
             <li class="nav-item ">
-              <%= link_to "Take a Quiz!", quiz_home_path, class: "nav-link btn btn-sm btn-success" %>
+              <%= link_to "Take a Quiz!", quiz_home_path, class: "nav-link btn btn-sm btn-primary" %>
             </li>
             <li class="nav-item ">
               <%= link_to "log out", logout_path, method: "post", class: "nav-link" %>
@@ -34,7 +34,7 @@
             </li>
             <% else %>
             <li class="nav-item ">
-              <%= link_to "Join Squadra", join_path , class: "btn btn-small btn-success" %>
+              <%= link_to "Join Squadra", join_path , class: "btn btn-small btn-primary" %>
             </li>
             <li class="nav-item ">
               <%= link_to 'login', login_path, class: "nav-link"  %>
@@ -45,7 +45,11 @@
     </div>
   </nav>
 
-  <body>
+
+
+
+
+  <body class="<%= 'hero' if controller_name+action_name == "staticwelcome" || controller_name+action_name == "sessionsnew"  %>">
     <% if flash[:errors] %>
     <div class="alert alert-danger" role="alert">
       <b>Alert - <%= pluralize flash[:errors].count, "error" %> : </b>

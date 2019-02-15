@@ -2,24 +2,33 @@ class AnswersController < ApplicationController
   before_action :require_login
 
   def new
-    @user = User.find(params[:user_id])
+    @user = current_user
     @questions = @user.company.questions
     @answers = @questions.map {|q| Answer.new(question_id: q.id)}
   end
 
   def create
-    @user = User.find(params[:user_id])
+    @user = current_user
     slack_json = build_slack_json
-
     slack_json[:attachments][0][:title] = "Welcome #{@user.full_name}"
     slack_json[:attachments][0][:title_link] = "#{request.base_url}#{user_path(@user)}"
-    params[:answers].each do |q_id, content|
-      Answer.create(content: content, user_id: params[:user_id], question_id: q_id)
-      question = Question.find(q_id).content
-      slack_json[:attachments][0][:fields] << { "title": "Q: #{question}", "value": ":speech_balloon: #{content}\n", "short": false }
+
+    #Check that all answers have content
+    valid = true
+    params[:answers].each {|q_id, content| valid = false if content =~ /\A\s*\Z/ }
+
+    if valid
+      params[:answers].each do |q_id, content|
+        Answer.create(content: content, user_id: params[:user_id], question_id: q_id)
+        question = Question.find(q_id).content
+        slack_json[:attachments][0][:fields] << { "title": "Q: #{question}", "value": ":speech_balloon: #{content}\n", "short": false }
+      end
+      post_user_to_slack(slack_json)
+      redirect_to user_path(current_user)
+    else
+      flash[:errors]  = ["At least one of your answers was blank, try angain and don't be shy!"]
+      redirect_to new_answer_path and return
     end
-    post_user_to_slack(slack_json)
-    redirect_to user_path(params[:user_id])
   end
 
   private
@@ -48,10 +57,8 @@ class AnswersController < ApplicationController
                "type": "button",
                "text": "Take a Quiz on your team! 🎮",
                "url": "#{request.base_url}#{quiz_home_path}"
-             }
-           ]
-         }
-       ]
+             }]
+         }]
       }
   end
 
@@ -69,14 +76,9 @@ class AnswersController < ApplicationController
 
     req_options = { use_ssl: uri.scheme == "https", }
 
-
-
     response = Net::HTTP.start(uri.hostname, uri.port, req_options) do |http|
       http.request(request)
     end
-
-
-
   end
 
 

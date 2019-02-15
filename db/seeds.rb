@@ -15,6 +15,11 @@ User.create([
     company: Company.first, password: "password", admin:true}
 ])
 
+# uncomment below to build x fake users for company_id'1' (default 50)
+# 50.times do
+#   Fabricate :user
+# end
+
 Company.first.users << [User.first, User.second]
 
 Question.create([
@@ -25,23 +30,29 @@ Question.create([
   {content: "Who is your least favorite superhero?", active: true, q_type: "text"},
   {content: "What was your favorite band 10 years ago?", active: true, q_type: "text"},
   {content: "How do you like your eggs?", active: true, q_type: "text"},
-  {content: "FrontEnd or BackEnd (keep it PG)?", active: true, q_type: "multi", options:"FrontEnd,BackEnd"}
+  {content: "FrontEnd or BackEnd?", active: true, q_type: "multi", options:"FrontEnd,BackEnd"}
 ])
-
-# uncomment below to build x fake users (default 50)
-# 50.times do
-#   Fabricate :user
-# end
 
 Company.first.questions << Question.all
 
+# Answer.create ([
+#   {content: "Elon Musk, what a beast", question: Question.all[0], user: User.first},
+#   {content: "Wine", question: Question.all[1] , user: User.first},
+#   {content: "Costa Rica", question: Question.all[2] , user: User.first},
+#   {content: "Cats", question: Question.all[3] , user: User.first},
+#   {content: "Superman - he is the worst", question: Question.all[4] , user: User.first},
+#   {content: "Pink Floyd", question: Question.all[5] , user: User.first},
+#   {content: "Poached, on muffins with smoked salmon!", question: Question.all[6] , user: User.first},
+#   {content: "FrontEnd", question: Question.all[7] , user: User.first}
+# ])
+
 Answer.create ([
-  {content: "Elon Musk, what a beast", question: Question.all[0], user: User.first},
-  {content: "Wine", question: Question.all[1] , user: User.first},
-  {content: "Costa Rica", question: Question.all[2] , user: User.first},
-  {content: "Cats", question: Question.all[3] , user: User.first},
-  {content: "Superman - he is the worst", question: Question.all[4] , user: User.first},
-  {content: "Pink Floyd", question: Question.all[5] , user: User.first},
-  {content: "Poached, on muffins with smoked salmon!", question: Question.all[6] , user: User.first},
-  {content: "FrontEnd", question: Question.all[7] , user: User.first}
+  {content: "Michelle Obama", question: Question.all[0], user: User.second},
+  {content: "Wine", question: Question.all[1] , user: User.second},
+  {content: "Dakar(Senegal)", question: Question.all[2] , user: User.second},
+  {content: "Dogs", question: Question.all[3] , user: User.second},
+  {content: "Captain America", question: Question.all[4] , user: User.second},
+  {content: "Beattles", question: Question.all[5] , user: User.second},
+  {content: "Toated with salmon on top", question: Question.all[6] , user: User.second},
+  {content: "BackEnd", question: Question.all[7] , user: User.second}
 ])
