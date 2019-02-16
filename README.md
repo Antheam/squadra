@@ -1,24 +1,7 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+A 5 day web app project built by Chris Camacho and Souley Sow.
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+More detailed README coming soon, for more information check out the like demo
+on Heroku. Note - first page load may take ~10 seconds due to use of a non-premium
+Heroku account: https://squadra-project.herokuapp.com/about
