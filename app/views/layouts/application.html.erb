@@ -18,7 +18,7 @@
     <div class="container">
       <span>
         <i class="fab fa-speakap" style="color:white;font-size:20px"></i>
-      <a class="navbar-brand" href="/"> quadra</a>
+      <a class="navbar-brand" href="/">quadra</a>
       </span>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -55,10 +55,6 @@
     </div>
   </nav>
 
-
-
-
-
   <body class="<%= 'hero' if controller_name+action_name == "staticwelcome" || controller_name+action_name == "sessionsnew"  %>">
     <% if flash[:errors] %>
     <div class="alert alert-danger" role="alert">
@@ -70,7 +66,6 @@
         <% end %>
       </div>
     <% end %>
-
 
     <%= yield %>
   </body>

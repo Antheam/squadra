@@ -1,41 +1,39 @@
-<section>
-  <div class="container">
-    <h1>Share your Story:</h1>
-    <br>
-    <p>
-      Welcome to <b><%= @user.company.name %></b>! We are so happy to have you on the
-      team <b><%= @user.first_name %></b>, please fill in the questions below
-      so we can all get to know you better!
-    </p>
+<div class="container">
+  <h1>Share your Story:</h1>
+  <br>
+  <p>
+    Welcome to <b><%= @user.company.name %></b>! We are so happy to have you on the
+    team <b><%= @user.first_name %></b>, please fill in the questions below
+    so we can all get to know you better!
+  </p>
 
-    <div class="form-group">
-      <%= form_tag answers_path(user_id: @user.id), :html => {:autocomplete => "off"} do |f| %>
+  <div class="form-group">
+    <%= form_tag answers_path(user_id: @user.id), :html => {:autocomplete => "off"} do |f| %>
 
-        <% @answers.each do |answer| %>
+      <% @answers.each do |answer| %>
 
-        <div class="form-group row">
-          <%= label_tag answer.id, answer.question.content%>
-          <div class="col-sm-12">
+      <div class="form-group row">
+        <%= label_tag answer.id, answer.question.content%>
+        <div class="col-sm-12">
 
-            <!-- display text questions as text fields -->
-            <% if answer.question.q_type == "text" %>
-              <%= text_area_tag "answers[#{answer.question_id}]", nil, class: "form-control", :options => {:autocomplete => 'off'}%>
-            <% end %>
+          <!-- display text questions as text fields -->
+          <% if answer.question.q_type == "text" %>
+            <%= text_area_tag "answers[#{answer.question_id}]", nil, class: "form-control", :options => {:autocomplete => 'off'}%>
+          <% end %>
 
-            <!-- display multi questions as selects with their correct options -->
-            <% if answer.question.q_type == "multi" %>
-              <%= select_tag "answers[#{answer.question_id}]",
-              options_for_select(answer.question.options.split(',')), class: "form-control"%>
-            <% end %>
+          <!-- display multi questions as selects with their correct options -->
+          <% if answer.question.q_type == "multi" %>
+            <%= select_tag "answers[#{answer.question_id}]",
+            options_for_select(answer.question.options.split(',')), class: "form-control"%>
+          <% end %>
 
-          </div>
         </div>
-        <% end %>
-
-        <%= submit_tag "Share my Story", class: "btn btn-lg btn-success"%>
-
+      </div>
       <% end %>
-    </div>
 
+      <%= submit_tag "Share my Story", class: "btn btn-lg btn-success"%>
+
+    <% end %>
   </div>
-</section>
+
+</div>

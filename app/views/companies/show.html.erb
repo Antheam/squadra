@@ -11,11 +11,9 @@
   <%= button_to "Edit", edit_company_path(@company), method: :get, class: "btn-sm btn-info", style: "float:right;" %>
   <h3><%= "'#{@company.bio}'" %></h3>
   <hr>
-
   <h5>
     <%= pluralize(@company.users.count, "User") %>:
   </h5>
-
 
   <p>
     <i>

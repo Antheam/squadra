@@ -4,7 +4,6 @@ class CompaniesController < ApplicationController
   skip_before_action :require_login, only: [:new, :create]
   before_action :find_company, only: [:show, :edit, :update, :destroy]
 
-
   def index
     @companies = Company.all
   end

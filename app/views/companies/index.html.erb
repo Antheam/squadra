@@ -1,49 +1,45 @@
-<section>
-  <div class="container">
-    <br>
-    <h1>[ADMIN] - All companies using Squarda</h1>
+<div class="container">
+  <br>
+  <h1>[ADMIN] - All companies using Squarda</h1>
 
-    <br>
+  <br>
 
-    <!-- Content to display empty state if no companies exist yet -->
-    <% if @companies.count == 0 %>
-    <p>
-      Looks like no companies have been set up yet, why not go set some up from the home page?
-    </p>
+  <!-- Content to display empty state if no companies exist yet -->
+  <% if @companies.count == 0 %>
+  <p>
+    Looks like no companies have been set up yet, why not go set some up from the home page?
+  </p>
 
-    <!-- Content to display table containing companies -->
-    <% else %>
-
-    <br>
-
-    <div class="table-responsive">
-      <table class="table">
-        <thead>
-          <tr>
-            <th scope="col">Company Name</th>
-            <th scope="col">Bio</th>
-            <th scope="col">Joined</th>
-            <th scope="col"># of Users</th>
-            <th scope="col"></th>
-          </tr>
-        </thead>
-        <tbody>
-          <% @companies.each do |company| %>
-          <tr>
-            <th scope="row"><%= link_to company.name, company_path(company) %></th>
-            <td><%= company.bio %></td>
-            <td><%= time_ago_in_words(company.created_at) + " ago" %></td>
-            <td><%= company.users.count %></td>
-            <td>
-              <%= link_to 'Delete', company_path(company), method: :delete,
-                  data: { confirm: 'Are you sure?' } %>
-            </td>
-          </tr>
-          <% end %>
-        </tbody>
-      </table>
-    </div>
-    <% end %>
-
+  <!-- Content to display table containing companies -->
+  <% else %>
+  <br>
+  <div class="table-responsive">
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Company Name</th>
+          <th scope="col">Bio</th>
+          <th scope="col">Joined</th>
+          <th scope="col"># of Users</th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @companies.each do |company| %>
+        <tr>
+          <th scope="row"><%= link_to company.name, company_path(company) %></th>
+          <td><%= company.bio %></td>
+          <td><%= time_ago_in_words(company.created_at) + " ago" %></td>
+          <td><%= company.users.count %></td>
+          <td>
+            <%= link_to 'Delete', company_path(company), method: :delete,
+                data: { confirm: 'Are you sure?' } %>
+          </td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
   </div>
-</section>
+  <% end %>
+
+</div>

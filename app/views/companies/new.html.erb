@@ -1,18 +1,17 @@
-<section>
-  <div class="container">
-      <h1>New Company</h1>
-      <p>
-        Welcome to Squadra, we help you onboard new starters easily to your
-        business by building relationships and friendships that last.
-        <br>
-
-        Tell us a bit about company and you to get started...
-      </p>
-
+<div class="container">
+    <h1>New Company</h1>
+    <p>
+      Welcome to Squadra, we help you onboard new starters easily to your
+      business by building relationships and friendships that last.
       <br>
 
-      <h5>Your Company Details:</h5>
-  <%= form_for @company do |f| %>
+      Tell us a bit about company and you to get started...
+    </p>
+
+    <br>
+
+    <h5>Your Company Details:</h5>
+    <%= form_for @company do |f| %>
       <div class="form-group row">
         <div class="col-3">
           <%= f.label :name %>
@@ -90,11 +89,7 @@
       </div>
       <% end %>
 
-
       <%= f.submit class: "btn btn-success"%>
 
-
-
-      <% end %>
-  </div>
-</section>
+    <% end %>
+</div>
