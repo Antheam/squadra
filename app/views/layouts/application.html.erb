@@ -9,20 +9,25 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <!-- Link for fontawesome (used for favicons) -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-
+    <%= favicon_link_tag asset_path('s.png') %>
     <!-- enforce scale to users device to support multi device UX  -->
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   </head>
 
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark top">
     <div class="container">
-      <a class="navbar-brand" href="/">Squadra</a>
+      <i class="fab fa-speakap" style="color:white;font-size:20px"></i>
+      <a class="navbar-brand" href="/"> quadra</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto ">
+
           <% if logged_in? %>
+          <li class="nav-item ">
+            <%= link_to "about", about_path , class: "nav-link " %>
+          </li>
             <li class="nav-item ">
               <%= link_to "Take a Quiz!", quiz_home_path, class: "nav-link btn btn-sm btn-primary" %>
             </li>
@@ -34,7 +39,10 @@
             </li>
             <% else %>
             <li class="nav-item ">
-              <%= link_to "Join Squadra", join_path , class: "btn btn-small btn-primary" %>
+              <%= link_to "About", about_path , class: "btn btn-small btn-secondary" %>
+            </li>
+            <li class="nav-item ">
+              <%= link_to "Join Squadra", join_path , class: "nav-link" %>
             </li>
             <li class="nav-item ">
               <%= link_to 'login', login_path, class: "nav-link"  %>

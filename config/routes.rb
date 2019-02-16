@@ -8,9 +8,9 @@ Rails.application.routes.draw do
   get '/quiz/new', to: 'static#quiz_new', as: 'new_quiz'
   get '/quiz/results', to: 'static#quiz_home', as: 'quiz_results_redir'
   post '/quiz/results', to: 'static#quiz_results', as: 'quiz_results'
+  get '/about', to: 'static#about', as: 'about'
 
   get '/join', to: 'companies#new', as: 'join'
-
   resources :companies
 
   resources :answers, only: [:new, :create]

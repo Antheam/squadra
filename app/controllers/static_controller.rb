@@ -6,6 +6,10 @@ class StaticController < ApplicationController
     redirect_to company_path(current_user.company) if logged_in?
   end
 
+  #takes user to demo page
+  def about
+  end
+
   #new quiz
   def quiz_home
   end
