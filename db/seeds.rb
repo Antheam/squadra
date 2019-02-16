@@ -15,6 +15,7 @@ User.create([
     company: Company.first, password: "password", admin:true}
 ])
 
+
 # uncomment below to build x fake users for company_id'1' (default 50)
 # 50.times do
 #   Fabricate :user
